@@ -12,7 +12,7 @@ public class JianDanHtmlParser implements Runnable {
 	}
 	@Override
 	public void run() {
-		System.out.println("==========第"+page+"页============");
+		System.out.println("==========No."+page+" page============");
 		List<String> list = new ArrayList<String>();
 		html = html.substring(html.indexOf("commentlist"));
 		String[] images = html.split("li>");
