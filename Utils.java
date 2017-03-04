@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class Utils {
 	public static void writeToFile(InputStream in, String path){
 		 File file = new File(path);
-		 System.out.println("是否为文件："+file.isFile());
+		 System.out.println("Is this a file："+file.isFile());
 		 try {
 			 FileOutputStream out = new FileOutputStream(file);
 	         byte[] buffer = new byte[1024];
@@ -21,7 +21,7 @@ public class Utils {
 	         }
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("================文件写入失败==================");
+			System.out.println("================Failed attempt of creating a file==================");
 		}        
 	}
 	/*
