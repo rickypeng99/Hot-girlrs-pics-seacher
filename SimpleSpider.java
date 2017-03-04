@@ -9,12 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 
 
 
-/**
- * 
- * 2015-9-3
- * @author nbsa
- * @description
- */
+
 public class SimpleSpider {
 	//The page number at which the program is trying to start.
 	private static final int page =2376 ;
