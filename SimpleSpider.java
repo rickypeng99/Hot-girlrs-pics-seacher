@@ -16,26 +16,26 @@ import org.apache.http.impl.client.HttpClients;
  * @description
  */
 public class SimpleSpider {
-	//起始页码
+	//The page number at which the program is trying to start.
 	private static final int page =2376 ;
 	public static void main(String[] args) {
-		//HttpClient 超时配置
+		//HttpClient Comfigurations for time out
 		RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).setConnectionRequestTimeout(6000).setConnectTimeout(6000).build();
 		CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build();
-		System.out.println("5秒后开始抓取煎蛋妹子图……");
+		System.out.println("Begin searching in 5 seconds……");
 		for (int i = page; i > 0; i--) {
-			//创建一个GET请求
+			//Creating a GET request
 			HttpGet httpGet = new HttpGet("http://jandan.net/ooxx/page-" + i);
 			httpGet.addHeader("User-Agent","Chrome/56.0.2924.87");
 			httpGet.addHeader("Cookie","_gat=1; nsfw-click-load=off; gif-click-load=on; _ga=GA1.2.1861846600.1423061484");
 			try {
-				//不敢爬太快
+				
 				Thread.sleep(5000);
-				//发送请求，并执行
+				//Sending the request
 				CloseableHttpResponse response = httpClient.execute(httpGet);
 				InputStream in = response.getEntity().getContent();
 				String html = Utils.convertStreamToString(in);
-				//网页内容解析
+				//Analyzing the web contents
 				new Thread(new JianDanHtmlParser(html, i)).start();
 			} catch (Exception e) {
 				e.printStackTrace();
